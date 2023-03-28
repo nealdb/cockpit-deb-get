@@ -1,0 +1,9 @@
+DEFVER=1
+get_github_releases "45Drives/cockpit-navigator"
+if [ "${ACTION}" != "prettylist" ]; then
+    URL="$(grep "browser_download_url.*\.deb\"" "${CACHE_FILE}" | grep -v -e preview -e lts | head -n1 | cut -d'"' -f4)"
+    VERSION_PUBLISHED="$(echo "${URL}" | cut -d'_' -f2)"
+fi
+PRETTY_NAME="Cockpit Navigator"
+WEBSITE="https://github.com/45Drives/cockpit-navigator"
+SUMMARY="A Featureful File System Browser for Cockpit"

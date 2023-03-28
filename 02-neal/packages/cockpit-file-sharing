@@ -1,0 +1,9 @@
+DEFVER=1
+get_github_releases "45Drives/cockpit-file-sharing"
+if [ "${ACTION}" != "prettylist" ]; then
+    URL="$(grep "browser_download_url.*\.deb\"" "${CACHE_FILE}" | grep -v -e preview -e lts | head -n1 | cut -d'"' -f4)"
+    VERSION_PUBLISHED="$(echo "${URL}" | cut -d'_' -f2)"
+fi
+PRETTY_NAME="Cockpit File Sharing"
+WEBSITE="https://github.com/45Drives/cockpit-file-sharing"
+SUMMARY="A Cockpit plugin for managing Samba and NFS shares."
